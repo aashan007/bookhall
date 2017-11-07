@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Page Title</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-  <link href="css/themes/1/conf-room1.min.css" rel="stylesheet" />
-
+    <title>Conference Room Booking App - Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/themes/1/conf-room1.min.css" rel="stylesheet" />
     <link href="css/themes/1/jquery.mobile.icons.min.css" rel="stylesheet" />
+    <link href="../../lib/jqm/1.4.5/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" /> -->
 
-    <!-- <link href="../../lib/jqm/1.4.5/jquery.mobile.custom.structure.min.css" rel="stylesheet" /> -->
+    <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
     <link href="css/style.css" rel="stylesheet" />
 
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-    <!-- <script src="../../lib/jquery/3.2.1/jquery-3.2.1.min.js"></script>
-
-    <script src="../../lib/jqm/1.4.5/jquery.mobile.custom.min.js"></script> -->
-
+    <!-- <script src="../../lib/jqm/1.4.4/jquery.mobile-1.4.5.min.js"></script> -->
 </head>
 
-
 <body>
-  <div data-role="page">
+  <div class="contaner">
 
-<div data-role="header" data-theme="c">
 
-    <h1>Book It</h1>
+      <div class="jumbotron">
+  <h1>Book IT</h1>
+  <p>Online portal for booking rooms</p>
+</div>
 
-</div><!-- /header -->
 
-<div role="main" class="ui-content">
+    </div>
 
-    <h2 class="mc-text-center">Welcome!</h2>
+<div class="container">
+          <form>
+          <div  class="form-group">
+              <h2 class="">Welcome!</h2>
+            </div>
+            <div class="form-group">
+              <p class=""><b>Existing Users</b></p>
+              <a href="sign-in.html" class="btn btn-primary">Sign In</a>
+            </div>
+            <div class="form-group">
+              <p class=""><b>Don't have an account?</b></p>
+              <a href="sign-up.html" class="btn btn-primary">Sign Up</a>
+            </div>
 
-    <p class="mc-top-margin-1-5"><b>Existing Users</b></p>
+</form>
 
-    <a href="sign-in.html" class="ui-btn ui-btn-b ui-corner-all">Sign In</a>
 
-    <p class="mc-top-margin-1-5"><b>Don't have an account?</b></p>
+</div>
 
-    <a href="sign-up.html" class="ui-btn ui-btn-b ui-corner-all">Sign Up</a>
 
-    <p></p>
 
-</div><!-- /content -->
 
-</div><!-- /page -->
+
+
+
 
 </body>
+<script src="../../lib/jquery/3.2.1/jquery-3.2.1.min.js"></script>
+<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.js"></script>
 </html>
