@@ -19,9 +19,9 @@ AccountController.prototype.setSession = function (session) {
 };
 
 AccountController.prototype.hashPassword = function (password, salt, callback) {
-    // we use pbkdf2 to hash and iterate 10k times by default
+
     var iterations = 10000,
-        keyLen = 64; // 64 bit.
+        keyLen = 64;
     this.crypto.pbkdf2(password, salt, iterations, keyLen, callback);
 };
 
@@ -66,7 +66,8 @@ AccountController.prototype.logon = function(email, password, callback) {
 };
 
 AccountController.prototype.logoff = function () {
-    if (this.session.userProfileModel) delete this.session.userProfileModel;
+    if (this.session.userProfileModel)
+      delete this.session.userProfileModel;
     return;
 };
 
@@ -119,7 +120,7 @@ AccountController.prototype.resetPassword = function (email, callback) {
             return callback(err, new me.ApiResponse({ success: false, extras: { msg: me.ApiMessages.DB_ERROR } }));
         }
 
-        // Save the user's email and a password reset hash in session. We will use
+      
         var passwordResetHash = me.uuid.v4();
         me.session.passwordResetHash = passwordResetHash;
         me.session.emailWhoRequestedPasswordReset = email;

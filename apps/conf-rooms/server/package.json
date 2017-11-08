@@ -10,5 +10,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.0",
+    "mongoose-session": "0.0.4",
+    "node-uuid": "^1.4.8",
+    "pbkdf2": "^3.0.14",
+    "should": "^13.1.3"
+  }
 }
