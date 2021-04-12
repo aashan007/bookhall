@@ -19,8 +19,9 @@ mongoose.connect(process.env.DATABASE,{
 .catch(()=> console.log('DB connection failed'))
 
 //middleware
-app.use(cors())
-app.use(morgan('dev'))
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
 
 // route middleware
 
