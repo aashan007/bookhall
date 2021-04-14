@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import "antd/dist/antd.css"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// 1. import from react-redux and redux
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import rootReducer from './reducer'
+
+
+
+const store = createStore(rootReducer, composeWithDevTools());
+// 5. provide redux store to the entire app
+
+
+
+// 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
