@@ -13,6 +13,7 @@ import Dashboard from './user/Dashboard'
 import TopNav from './components/TopNav' 
 import DashboardSeller from './user/DashboardSeller'
 import NewHall from './hall/NewHall'
+import EditHall from './hall/EditHall'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
       <PrivateRoute exact path="/dashboard/seller" component={DashboardSeller}/>
       <PrivateRoute exact path="/halls/new" component={NewHall}/>
+      <PrivateRoute exact path="/hall/edit/:hallId" component={EditHall}/>
        
       
     </Switch>

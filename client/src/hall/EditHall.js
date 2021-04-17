@@ -1,20 +1,20 @@
-import {useSelector} from 'react-redux'
-import {useState} from 'react'
-import {Select} from 'antd'
-import {createHall} from '../actions/hall'
+import {useState,useEffect} from 'react'
 import {toast} from 'react-toastify'
-import HallCreateForms from '../components/forms/HallCreateForms'
+import {Select} from 'antd'
+import {read,updateHall} from '../actions/hall'
+import {useSelector} from 'react-redux'
+import HallEditForms from'../components/forms/HallEditForms'
+
 
 
 const {Option} = Select;
 
 
+const EditHall = ({match})=>{
 
-function NewHall() {
-
-    const {auth} = useSelector((state) => ({...state}));
-    const {token} = auth
-    const [values,setValues] = useState({
+        const {auth} = useSelector((state) => ({...state}));
+        const {token} = auth
+        const [values,setValues] = useState({
         title: "",
         content: "",
         location: "",
@@ -26,16 +26,29 @@ function NewHall() {
 
     });
 
+
     const [preview,setPreview] = useState('https://via.placeholder.com/100x100.png?text=PREVIEW')
 
     const {title,content,location,image,price,from,to,capacity} = values;
   
-    const handleSubmit = async (e)=>{
+
+
+    useEffect( ()=>{
+        loadSellerHall();
+    },[]);
+
+    const loadSellerHall = async()=>{
+        //console.log(match)
+         let res = await read(match.params.hallId);
+         setValues({...values,...res.data})
+          setPreview(`${process.env.REACT_APP_API}/hall/image/${res.data._id}`)
+    }
+
+    const handleSubmit = async(e)=>{
         e.preventDefault();
-        //console.log(values);
-        //there is image file so send as form data
 
         let hallData = new FormData();
+
         hallData.append('title',title)
         hallData.append('content',content)
         hallData.append('location',location)
@@ -45,31 +58,29 @@ function NewHall() {
         hallData.append('to',to)
         hallData.append('capacity',capacity)
 
-        console.log([...hallData]);
+         try{
+            let response = await updateHall(token,hallData,match.params.hallId);
+            console.log('HOTEL_UPDATE_RESPONSE',response);
 
-        try{
-            let response = await createHall(token,hallData);
-        console.log('HOTEL_CREATE_RESPONSE',response);
-
-        toast.success('New Hotel is created');
+            toast.success(`${response.data.title} is updated`);
 
         setTimeout(()=>{
             window.location.reload();
         },1000)
-
         }
         catch(err){
             console.log(err)
             toast.error(err.response.data)
         }
 
-        
 
     }
+
     const handleImageChange =(e)=>{
       //  console.log(e.target.files[0])
       setPreview(URL.createObjectURL(e.target.files[0]));
       setValues({...values,image:e.target.files[0]});
+     
 
     }
 
@@ -78,25 +89,29 @@ function NewHall() {
 
 
     }
-    
+
     return (
         <>
         <div className="container-fluid bg-secondary p-5 text-center">
-            Post a new Hotel
+            Edit Hotel
         </div>
+
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-10">
-                    <br/>
-                    <HallCreateForms
-                        values={values}
+                    <HallEditForms
+
+                    values={values}
                         setValues={setValues}
                         handleChange={handleChange}
                         handleImageChange={handleImageChange}
                         handleSubmit={handleSubmit}
 
+
                     />
+                    
                 </div>
+
                 <div className="col-md-2">
                     <img src ={preview} alt="preview_image" className="img img-fluid m-2"/>
                     <pre>
@@ -105,9 +120,8 @@ function NewHall() {
                 </div>
             </div>
         </div>
-
         </>
     )
 }
 
-export default NewHall
+export default EditHall;
