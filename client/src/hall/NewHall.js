@@ -45,7 +45,7 @@ function NewHall() {
         hallData.append('to',to)
         hallData.append('capacity',capacity)
 
-        console.log([...hallData]);
+      //  console.log([...hallData]);
 
         try{
             let response = await createHall(token,hallData);

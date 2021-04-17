@@ -37,3 +37,5 @@ export const updateHall = async(token,data,hallId) => await axios.put(`${process
         Authorization: `Bearer ${token}`        
     }
 })
+
+export const searchListing = async(query) => await axios.post(`${process.env.REACT_APP_API}/search-listings`,query);

@@ -14,6 +14,9 @@ import TopNav from './components/TopNav'
 import DashboardSeller from './user/DashboardSeller'
 import NewHall from './hall/NewHall'
 import EditHall from './hall/EditHall'
+import ViewHall from './hall/ViewHall'
+
+import SearchHall from "./hall/SearchHall";
 
 
 function App() {
@@ -25,6 +28,8 @@ function App() {
       <Route exact path="/" component={Home}></Route>
       <Route exact path="/login" component={Login}></Route>
       <Route exact path="/register" component={Register}></Route>
+      <Route exact path="/hall/:hallId" component={ViewHall}></Route>
+      <Route exact path="/search-result" component={SearchHall}></Route>
       <PrivateRoute exact path="/dashboard" component={Dashboard}/>
       <PrivateRoute exact path="/dashboard/seller" component={DashboardSeller}/>
       <PrivateRoute exact path="/halls/new" component={NewHall}/>

@@ -18,7 +18,7 @@ const EditHall = ({match})=>{
         title: "",
         content: "",
         location: "",
-        image: "",
+        
         price: "",
         from:"",
         to: "",
@@ -26,10 +26,12 @@ const EditHall = ({match})=>{
 
     });
 
+    const [image,setImage] = useState("")
+
 
     const [preview,setPreview] = useState('https://via.placeholder.com/100x100.png?text=PREVIEW')
 
-    const {title,content,location,image,price,from,to,capacity} = values;
+    const {title,content,location,price,from,to,capacity} = values;
   
 
 
@@ -79,7 +81,7 @@ const EditHall = ({match})=>{
     const handleImageChange =(e)=>{
       //  console.log(e.target.files[0])
       setPreview(URL.createObjectURL(e.target.files[0]));
-      setValues({...values,image:e.target.files[0]});
+      setImage(e.target.files[0])
      
 
     }
