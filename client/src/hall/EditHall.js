@@ -95,7 +95,7 @@ const EditHall = ({match})=>{
     return (
         <>
         <div className="container-fluid bg-secondary p-5 text-center">
-            Edit Hotel
+            Edit Hall
         </div>
 
         <div className="container-fluid">

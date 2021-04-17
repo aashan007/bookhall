@@ -82,7 +82,7 @@ function NewHall() {
     return (
         <>
         <div className="container-fluid bg-secondary p-5 text-center">
-            Post a new Hotel
+            Post a new Hall
         </div>
         <div className="container-fluid">
             <div className="row">

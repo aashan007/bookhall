@@ -3,6 +3,8 @@ import queryString from 'query-string'
 import {Link} from 'react-router-dom'
 import Search from '../components/forms/Search'
 import {searchListing} from '../actions/hall'
+import SmallCard from '../components/cards/SmallCard'
+
 const SearchHall = ()=>{
     const [searchLocation,setSearchLocation] = useState('')
     const [searchDate,setSearchDate] = useState('')
@@ -18,11 +20,19 @@ const SearchHall = ()=>{
         })
     },[window.location.search])
     return(
+        <>
+        <div className="col">
+            <br/>
+            <Search/>
+        </div>
         <div className="container">
             <div className="row">
-                    {JSON.stringify(halls,null,4)}
+                    {
+                    halls.map(h => <SmallCard key = {h._id} h={h} />)
+}
             </div>
         </div>
+        </>
     )
 }
 
